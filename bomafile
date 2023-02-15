@@ -1,0 +1,25 @@
+Python implementation of the algorithm:
+
+def max_in_row_min_in_col(matrix):
+m, n = len(matrix), len(matrix[0])
+result = []
+for i in range(m):
+max_in_row = max(matrix[i])
+for j in range(n):
+if matrix[i][j] == max_in_row and matrix[i][j] == min([matrix[k][j] for k in range(m)]):
+result.append(matrix[i][j])
+return result
+
+Test:
+matrix = [[5,16,20],[9,11,18],[15,16,17]]
+print(max_in_row_min_in_col(matrix)) # Output: [17]
+
+b) The time complexity of the algorithm is O(m*n^2), where m is the number of rows and n is the number of columns in the matrix. The space complexity is O(1), as we are not using any extra space in the algorithm other than the "result" list.
+
+c) Test 1:
+matrix = [[1,2],[3,4]]
+assert max_in_row_min_in_col(matrix) == []
+
+Test 2:
+matrix = [[1,2,3],[4,5,6],[7,8,9]]
+assert max_in_row_min_in_col(matrix) == [7, 8, 9]
